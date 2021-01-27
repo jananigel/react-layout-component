@@ -1,0 +1,23 @@
+h1, p {
+  font-family: Lato;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-horizontal-center {
+  @extend .flex;
+  justify-content: center;
+}
+
+.flex-vertical-center {
+  @extend .flex;
+  align-items: center;
+}
+
+.flex-center {
+  @extend .flex;
+  justify-content: center;
+  align-items: center;
+}
