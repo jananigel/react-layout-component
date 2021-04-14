@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import "./style.scss";
 import ThreeRowsLayout from "./layouts/three-rows/three-rows-layout.js";
 
+const BASIC_UNIT = 1024;
+const CYLINDER = 7.84423828125;
+
 const Header = () => {
   return (
     <>
@@ -64,9 +67,19 @@ export const App = () => {
     rightValue: ""
   });
   const onInputChange = e => {
+    let convertToRight, convertToLeft;
+    if (e.left) {
+      convertToRight = Math.round(
+        Math.round((e.left * BASIC_UNIT) / CYLINDER) * CYLINDER
+      );
+    } else {
+      convertToLeft = Math.round(
+        Math.round((e.right / BASIC_UNIT) * CYLINDER) / CYLINDER
+      );
+    }
     setInputValue({
-      leftValue: e.left,
-      rightValue: e.right
+      leftValue: convertToLeft,
+      rightValue: convertToRight
     });
   };
   const onClearClick = e => {
