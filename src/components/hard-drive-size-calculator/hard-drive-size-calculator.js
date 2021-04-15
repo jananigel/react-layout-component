@@ -8,7 +8,7 @@ import Content from "../../shared/components/popup-content/popup-content.js";
 const BASIC_UNIT = 1024;
 const CYLINDER = 7.84423828125;
 
-export const HardDriveSizeCalculator = () => {
+export const HardDriveSizeCalculator = ({headerActionClick}) => {
   const [inputValue, setInputValue] = useState({
     leftValue: "",
     rightValue: ""
@@ -35,10 +35,15 @@ export const HardDriveSizeCalculator = () => {
       rightValue: ""
     });
   };
+
+  const onHeaderActionClick = e => {
+    headerActionClick(e);
+  }
+
   return (
     <>
       <ThreeRowsLayout
-        header={<Header />}
+        header={<Header actionClick={onHeaderActionClick} />}
         content={
           <Content
             leftValue={inputValue["leftValue"]}

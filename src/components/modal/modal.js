@@ -4,7 +4,7 @@ import ThreeRowsLayout from "../../layouts/three-rows/three-rows-layout.js";
 import Header from "../../shared/components/popup-header/popup-header.js";
 import Footer from "../../shared/components/popup-footer/popup-footer.js";
 
-export const Modal = () => {
+export const Modal = ({closeClick}) => {
  
   const onClearClick = e => {
     setInputValue({
@@ -12,10 +12,15 @@ export const Modal = () => {
       rightValue: ""
     });
   };
+
+  const onCloseClick = e => {
+    closeClick(e);
+  }
+
   return (
     <>
       <ThreeRowsLayout
-        header={<Header />}
+        header={<Header actionClick={onCloseClick}/>}
         content={
           'message in modal'
         }
